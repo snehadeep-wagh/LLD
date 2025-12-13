@@ -6,16 +6,13 @@ import NotificationService.PushNotification;
 import NotificationService.SmsNotification;
 import Exceptions.UnsupportedNotificationType;
 import enums.NotificationChannelEnum;
+import utils.notificationUtil;
 
 public class NotificationChannelFactory {
 
     public NotificationService getNotificationChannel(NotificationChannelEnum notificationType) {
-        if (notificationType.equals(NotificationChannelEnum.SMS)) {
-            return new SmsNotification();
-        } else if (notificationType.equals(NotificationChannelEnum.EMAIL)) {
-            return new EmailNotification();
-        } else if (notificationType.equals(NotificationChannelEnum.PUSH)) {
-            return new PushNotification();
+        if (notificationUtil.notificationChannelToServiceMap.get(notificationType) != null) {
+            return notificationUtil.notificationChannelToServiceMap.get(notificationType);
         } else {
             throw new UnsupportedNotificationType();
         }
