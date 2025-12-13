@@ -1,19 +1,16 @@
 import java.util.Scanner;
 
 import NotificationService.NotificationService;
+import enums.NotificationChannelEnum;
 import NotificationFactory.NotificationChannelFactory;
 
 public class main {
 
-    private static String getNotificationTypeFromId(Integer notificationTypeId) {
-        if (notificationTypeId == 1)
-            return "SMS";
-        else if (notificationTypeId == 2)
-            return "EMAIL";
-        else if (notificationTypeId == 3)
-            return "PUSH";
-
-        return "NA";
+    private static NotificationChannelEnum getNotificationTypeFromId(Integer notificationTypeId) {
+        if (utils.notificationUtil.notificationChannelMap.get(notificationTypeId) != null) {
+            return utils.notificationUtil.notificationChannelMap.get(notificationTypeId);
+        }
+        return NotificationChannelEnum.INVALID;
     }
 
     public static void main(String[] args) {
@@ -24,7 +21,7 @@ public class main {
                     "Select the notifications type:\n1) SMS\n2) EMAIL\n3) PUSH 4) EXIT. \n\nPlease enter the number:  ");
 
             int notificationTypeId;
-            String notificationType;
+            NotificationChannelEnum notificationType;
 
             notificationTypeId = scanner.nextInt();
             scanner.nextLine();
