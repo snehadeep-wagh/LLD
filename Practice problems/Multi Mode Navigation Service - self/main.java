@@ -2,6 +2,7 @@ import java.util.*;
 
 import javax.swing.text.NavigationFilter;
 
+import model.NavigationContext;
 import navigationStrategy.DrivingStrategy;
 import navigationStrategy.PublicTransportStrategy;
 import navigationStrategy.RoutingStrategy;
@@ -84,7 +85,11 @@ public class main {
             System.out.print(navigator.generateRoute(src, dest));
 
             System.out.print("\nETA -> ");
-            int eta = navigator.calculateEta(src, dest);
+            NavigationContext navigationContext = new NavigationContext();
+            navigationContext.setSrc(src);
+            navigationContext.setDest(dest);
+
+            int eta = navigator.calculateEta(navigationContext);
             System.out.print(String.valueOf(eta) + " min. is the Estimated time.\n\n");
 
             int exit = 0;

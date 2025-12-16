@@ -1,6 +1,8 @@
 package navigationStrategy;
 
+import model.NavigationContext;
+
 public interface RoutingStrategy {
-    Integer getETA(String src, String dest);
+    Integer getETA(NavigationContext NavigationContext);
     String getRoute(String src, String dest);
 }

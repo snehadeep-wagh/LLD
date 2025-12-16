@@ -2,10 +2,12 @@ package navigationStrategy;
 
 import java.util.Random;
 
+import model.NavigationContext;
+
 public class DrivingStrategy implements RoutingStrategy {
 
     @Override
-    public Integer getETA(String src, String dest) {
+    public Integer getETA(NavigationContext NavigationContext) {
         Random rand = new Random();
         int min = 10;
         int max = 100;

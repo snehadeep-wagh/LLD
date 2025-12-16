@@ -1,5 +1,6 @@
 package navigator;
 
+import model.NavigationContext;
 import navigationStrategy.DrivingStrategy;
 import navigationStrategy.RoutingStrategy;
 
@@ -23,7 +24,7 @@ public class Navigator {
         return routingStrategy.getRoute(src, dest);
     }
 
-    public Integer calculateEta(String src, String dest){
-        return routingStrategy.getETA(src, dest);
+    public Integer calculateEta(NavigationContext navigationContext){
+        return routingStrategy.getETA(navigationContext);
     }
 }
